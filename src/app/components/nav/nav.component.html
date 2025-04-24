@@ -1,6 +1,12 @@
 <nav>
-    <ul>
-        <li [routerLink]="['home']"  routerLinkActive="active">Home</li>
-        <li routerLink="/create" routerLinkActive="active">New task</li>
-    </ul>
+    @if (username()) {
+
+        <ul>
+            <li [routerLink]="['home']"  routerLinkActive="active">Home</li>
+            <li routerLink="/create" routerLinkActive="active">New task</li>
+        </ul>
+        <p>{{username()}} <button (click)="logout()">logout</button></p>
+    }@else {
+       
+    }
 </nav>
