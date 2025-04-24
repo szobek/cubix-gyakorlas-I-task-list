@@ -21,4 +21,5 @@ export class HomeComponent {
   inCompleteTask(task: Task) {
   this.taskService.inCompleteTask(task);
   }
+ 
 }

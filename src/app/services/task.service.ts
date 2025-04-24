@@ -25,7 +25,21 @@ export class TaskService {
     });
   }
   tasks: WritableSignal<Task[]> = signal([]);
+  private loadTasks() {
+    return localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')!) : [];
+  }
+  constructor() {
+    this.tasks.set(this.loadTasks());
+  }
   private findIndex(id: number): number {
     return this.tasks().findIndex((task) => task.id === id);
+  }
+
+  addTask(task: Task) {
+    return new Promise((resolve) => {
+      this.tasks.update((tasks) => [...tasks, task]);
+      localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+      resolve(true)
+    });
   }
 }

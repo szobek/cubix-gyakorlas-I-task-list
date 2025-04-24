@@ -18,21 +18,18 @@ export class CreateTaskComponent {
     description: '',
   }
 taskSave(){
-  const task:Task={
+  const task: Task = {
+    id: this.taskService.tasks().length + 1,
     name: this.task.name,
     description: this.task.description,
-    completed: false,
-    id: this.taskService.tasks().length + 1,
+    completed: false
   }
-  console.log("this.task:",this.task);
-  
-  this.taskService.tasks.update((tasks) => [...tasks, task]);
-  console.log(this.taskService.tasks());
-  // return
-  
-  this.task.name = '';
-  this.task.description = '';
-  
-  this.router.navigate(['/home']);
+  this.taskService.addTask(task).then((res)=>{
+    if(res){
+      this.task.name = '';
+      this.task.description = '';
+      this.router.navigate(['/home']);
+    }
+  })
 }
 }
