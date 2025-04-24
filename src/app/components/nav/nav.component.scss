@@ -1,0 +1,19 @@
+nav{
+    display: flex;
+    background-color: #ccc;
+    ul{
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        li{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+            &.active{
+                font-weight: bold;
+                color: salmon;
+            }
+        }
+    }
+}

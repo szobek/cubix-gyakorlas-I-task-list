@@ -1,0 +1,12 @@
+@for (task of tasks(); track task.id) {
+    <div class="task-item" [ngClass]="{ 'completed': task.completed, 'incompleted': !task.completed }" >
+        <h3>{{ task.name }}</h3>
+        <p>{{ task.description }}</p>
+        <p>{{task.completed}}</p>
+        @if (task.completed) {
+            <button (click)="inCompleteTask(task)">mark incomplete</button>
+        }@else {
+            <button (click)="completeTask(task)">mark success</button>
+        }
+    </div>
+}
