@@ -13,6 +13,7 @@ export class TaskService {
       }
       return tasks;
     });
+    this.saveTasks();
   }
   
   inCompleteTask(task: Task) {
@@ -23,6 +24,7 @@ export class TaskService {
       }
       return tasks;
     });
+    this.saveTasks();
   }
   tasks: WritableSignal<Task[]> = signal([]);
   private loadTasks() {
@@ -40,6 +42,12 @@ export class TaskService {
       this.tasks.update((tasks) => [...tasks, task]);
       localStorage.setItem('tasks', JSON.stringify(this.tasks()));
       resolve(true)
+    });
+  }
+  private saveTasks() {
+    return new Promise((resolve) => {
+      localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+      resolve(true);
     });
   }
 }
