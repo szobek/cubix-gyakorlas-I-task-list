@@ -22,7 +22,8 @@ taskSave(){
     id: this.taskService.incompletedTasks().length + 1,
     name: this.task.name,
     description: this.task.description,
-    completed: false
+    completed: false,
+    user: localStorage.getItem('username') || 'N/A',
   }
   this.taskService.addTask(task).then((res)=>{
     if(res){

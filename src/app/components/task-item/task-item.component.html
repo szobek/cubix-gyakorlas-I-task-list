@@ -2,6 +2,7 @@
     <div class="task-item" [ngClass]="{ 'completed': task.completed, 'incompleted': !task.completed }">
         <h3>{{ task.name }}</h3>
         <p>{{ task.description }}</p>
+        <p>Author: {{ task.user }}</p>
         @if(task.completed){
             <button (click)="inCompleteTask(task)">mark unsuccess</button>
         } @else {
