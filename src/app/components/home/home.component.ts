@@ -1,5 +1,4 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { TaskItemComponent } from '../task-item/task-item.component';
@@ -12,10 +11,10 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 })
 export class HomeComponent {
   taskService=inject(TaskService);
-  tasks
+  incompletedTasks
+  completedTasks
   constructor() {
-    this.tasks= this.taskService.tasks;
+    this.incompletedTasks= this.taskService.incompletedTasks;
+    this.completedTasks= this.taskService.completedTasks;
   }
-  
- 
 }

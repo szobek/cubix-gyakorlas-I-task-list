@@ -19,7 +19,7 @@ export class CreateTaskComponent {
   }
 taskSave(){
   const task: Task = {
-    id: this.taskService.tasks().length + 1,
+    id: this.taskService.incompletedTasks().length + 1,
     name: this.task.name,
     description: this.task.description,
     completed: false
