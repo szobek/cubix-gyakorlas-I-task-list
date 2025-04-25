@@ -2,11 +2,15 @@
     <div class="task-item" [ngClass]="{ 'completed': task.completed, 'incompleted': !task.completed }">
         <h3>{{ task.name }}</h3>
         <p>{{ task.description }}</p>
-        <p>Author: {{ task.user }}</p>
+        <p class="author">Author: {{ task.user }}</p>
         @if(task.completed){
-            <button (click)="inCompleteTask(task)">mark unsuccess</button>
+            <button (click)="inCompleteTask(task)">
+                <img src="uncheck.svg" alt="">
+            </button>
         } @else {
-            <button (click)="completeTask(task)">mark success</button>
+            <button (click)="completeTask(task)">
+                <img src="check.svg" alt="">
+            </button>
         }
     </div>
 }

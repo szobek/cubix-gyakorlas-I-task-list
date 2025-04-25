@@ -1,3 +1,5 @@
+$task-completed-bg: #5e926e;
+$task-incompleted-bg: #d88181;
 .task-item{
     display: flex;
     justify-content: space-between;
@@ -5,12 +7,21 @@
     padding: 10px;
     border-bottom: 1px solid #ccc;
     &.completed{
-        :not(button){
+        :not(button,p.author){
             text-decoration: line-through;
         }
-        background-color: #5e926e;
+        background-color: $task-completed-bg;
     }
     &.incompleted{
-        background-color: #d88181;
+        background-color: $task-incompleted-bg;
+    }
+    button{
+        img{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 }
