@@ -1,7 +1,7 @@
 @if(task !== undefined){
 <div class="task-item" [ngClass]="{ 'completed': task.completed, 'incompleted': !task.completed }">
     <div>
-        <h3>{{ task.name }}</h3>
+        <h3>{{ task.name | taskName }}</h3>
         <p>{{ task.description }}</p>
         <p class="author">Author: {{ task.user }}</p>
     </div>

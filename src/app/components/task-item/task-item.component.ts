@@ -8,10 +8,11 @@ import {
 import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
+import { TaskNamePipe } from '../../pipes/task-name.pipe';
 
 @Component({
   selector: 'cgyi-task-item',
-  imports: [CommonModule],
+  imports: [CommonModule,TaskNamePipe],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.scss',
 })
