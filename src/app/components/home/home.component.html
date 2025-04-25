@@ -1,9 +1,17 @@
-
-@for (task of incompletedTasks(); track task.id) {
-        <cgyi-task-item [task]="task" />
+@if(incompletedTasks().length > 0){
+    <h2>Incompleted Tasks</h2>
+    @for (task of incompletedTasks(); track task.id) {
+            <cgyi-task-item [task]="task" />
+    }
+} @else {
+    <h2>No Incompleted Tasks</h2>
 }
 <hr>
-
-@for (task of completedTasks(); track task.id) {
-        <cgyi-task-item [task]="task" />
+@if(completedTasks().length > 0){
+    <h2>Completed Tasks</h2>
+    @for (task of completedTasks(); track task.id) {
+            <cgyi-task-item [task]="task" />
+    }
+} @else {
+    <h2>No Completed Tasks</h2>
 }
