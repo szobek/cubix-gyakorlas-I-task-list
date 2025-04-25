@@ -1,19 +1,40 @@
+$navbar-bg-color: #cacaca;
+$navbar-height: 60px;
+$activeRouteColor: #007bff;
+
 nav{
     display: flex;
-    background-color: #ccc;
-    ul{
-        list-style: none;
+    background-color: $navbar-bg-color;
+    height: $navbar-height;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    .nav-items{
         display: flex;
-        gap: 1rem;
-        li{
-            cursor: pointer;
-            &:hover{
-                text-decoration: underline;
-            }
-            &.active{
-                font-weight: bold;
-                color: salmon;
+        align-items: center;
+        ul{
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            li{
+                cursor: pointer;
+                &:hover{
+                    text-decoration: underline;
+                }
+                &.active{
+                    font-weight: bold;
+                    color: $activeRouteColor;
+                }
             }
         }
     }
+    .user-details{
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    padding: 0 1rem;
 }

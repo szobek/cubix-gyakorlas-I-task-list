@@ -1,12 +1,18 @@
+@if (username()) {
 <nav>
-    @if (username()) {
-
+    <div class="nav-items">
         <ul>
-            <li [routerLink]="['home']"  routerLinkActive="active">Home</li>
+            <li [routerLink]="['home']" routerLinkActive="active">Home</li>
             <li routerLink="/create" routerLinkActive="active">New task</li>
         </ul>
-        <p>{{username()}} <button (click)="logout()">logout</button></p>
-    }@else {
-       
-    }
+    </div>
+    <div class="user-details">
+        {{username()}}
+        <button (click)="logout()" class="button-logout">
+            <img src="logout.svg" alt="logout">
+        </button>
+    </div>
 </nav>
+    }@else {
+<p>please login</p>
+    }
