@@ -1,4 +1,14 @@
-<p>create-task works!</p>
-<input type="text" [(ngModel)]="task.name"  id="">
-<input type="text" [(ngModel)]="task.description">
-<button (click)="taskSave()">save</button>
+<div class="create-task-wrapper">
+    <h1>Create Task</h1>
+    <div class="input-group">
+        <label for="taskname">Task Name</label>
+        <input type="text" [(ngModel)]="task.name" id="taskname">
+    </div>
+    <div class="input-group">
+        <label for="taskdescription">Task Description</label>
+        <input type="text" [(ngModel)]="task.description" id="taskdescription">
+    </div>
+    <div class="input-group">
+        <button class="button-base" (click)="taskSave()">save</button>
+    </div>
+</div>
