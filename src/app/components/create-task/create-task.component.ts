@@ -18,6 +18,9 @@ export class CreateTaskComponent {
     description: '',
   }
 taskSave(){
+  if(this.task.name==='' || this.task.description===""){
+    return;
+  }
   const task: Task = {
     id: this.taskService.incompletedTasks().length + 1,
     name: this.task.name,
