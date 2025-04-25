@@ -1,1 +1,7 @@
-username: <input type="text" [(ngModel)]="username" /> <button (click)="login()">Login</button>
+<div class="login-wrapper">
+    <h1>Login</h1>
+    <label for="username">username</label>
+    <input type="text" placeholder="username" id="username" [(ngModel)]="username" />
+    <button class="button-base" (click)="login()">Login</button>
+
+</div>
