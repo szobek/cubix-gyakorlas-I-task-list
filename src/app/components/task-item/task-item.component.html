@@ -1,19 +1,25 @@
 @if(task !== undefined){
-    <div class="task-item" [ngClass]="{ 'completed': task.completed, 'incompleted': !task.completed }">
+<div class="task-item" [ngClass]="{ 'completed': task.completed, 'incompleted': !task.completed }">
+    <div>
         <h3>{{ task.name }}</h3>
         <p>{{ task.description }}</p>
         <p class="author">Author: {{ task.user }}</p>
+    </div>
+    <div>
+
+
         @if(task.completed){
-            <button (click)="inCompleteTask(task)">
-                <img src="uncheck.svg" alt="">
-            </button>
+        <button (click)="inCompleteTask(task)">
+            <img src="uncheck.svg" alt="">
+        </button>
         } @else {
-            <button (click)="completeTask(task)">
-                <img src="check.svg" alt="">
-            </button>
+        <button (click)="completeTask(task)">
+            <img src="check.svg" alt="">
+        </button>
         }
         <button (click)="deleteTask(task)">
             <img src="delete.svg" alt="">
         </button>
     </div>
+</div>
 }
