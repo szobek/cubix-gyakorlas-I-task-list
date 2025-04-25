@@ -11,24 +11,30 @@ export class TaskService {
   completeTask(task: Task) {
     this.incompletedTasks.update((tasks) => {
       const index = this.findTaskIndex(task.id, this.incompletedTasks);
-      console.log(tasks[index], "index of task to be completed");
-      
+      console.log(tasks[index], 'index of task to be completed');
+
       if (index !== -1) {
         tasks[index].completed = true;
-        this.completedTasks.update((completedTasks) => [...completedTasks, tasks[index]]);
+        this.completedTasks.update((completedTasks) => [
+          ...completedTasks,
+          tasks[index],
+        ]);
         tasks.splice(index, 1);
         this.saveTasks();
       }
       return tasks;
     });
   }
-  
+
   inCompleteTask(task: Task) {
     this.completedTasks.update((tasks) => {
-      const index = this.findTaskIndex(task.id,this.completedTasks);
+      const index = this.findTaskIndex(task.id, this.completedTasks);
       if (index !== -1) {
         tasks[index].completed = false;
-        this.incompletedTasks.update((incompletedTasks) => [...incompletedTasks, tasks[index]]);
+        this.incompletedTasks.update((incompletedTasks) => [
+          ...incompletedTasks,
+          tasks[index],
+        ]);
         tasks.splice(index, 1);
         this.saveTasks();
       }
@@ -37,7 +43,7 @@ export class TaskService {
   }
 
   constructor() {
-    this.loadTasks()
+    this.loadTasks();
   }
   private findTaskIndex(id: number, obj: WritableSignal<Task[]>): number {
     return obj().findIndex((task) => task.id === id);
@@ -52,8 +58,8 @@ export class TaskService {
   }
   private saveTasks() {
     const tasks = [...this.incompletedTasks(), ...this.completedTasks()];
-    console.log(tasks,"saved tasks");
-    
+    console.log(tasks, 'saved tasks');
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
@@ -61,8 +67,37 @@ export class TaskService {
     const tasks = localStorage.getItem('tasks');
     if (tasks) {
       const parsedTasks: Task[] = JSON.parse(tasks);
-      this.incompletedTasks.update((tasks) => [...tasks, ...parsedTasks.filter((task) => !task.completed)]);
-      this.completedTasks.update((tasks) => [...tasks, ...parsedTasks.filter((task) => task.completed)]);
+      this.incompletedTasks.update((tasks) => [
+        ...tasks,
+        ...parsedTasks.filter((task) => !task.completed),
+      ]);
+      this.completedTasks.update((tasks) => [
+        ...tasks,
+        ...parsedTasks.filter((task) => task.completed),
+      ]);
+    }
+  }
+
+  deleteTask(task: Task) {
+    if (task.completed) {
+      const index = this.findTaskIndex(task.id, this.completedTasks);
+      this.completedTasks.update((tasks) => {
+        if (index !== -1) {
+          tasks.splice(index, 1);
+          this.saveTasks();
+        }
+        return tasks;
+      });
+      
+    } else {
+      const index = this.findTaskIndex(task.id, this.incompletedTasks);
+      this.incompletedTasks.update((tasks) => {
+        if (index !== -1) {
+          tasks.splice(index, 1);
+          this.saveTasks();
+        }
+        return tasks;
+      });
     }
   }
 }
