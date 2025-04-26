@@ -20,8 +20,6 @@ export class TaskItemComponent {
   private _task?: any;
   taskService = inject(TaskService);
   @Input({ required: true }) set task(task: Task) {
-    console.log('task', task);
-
     this._task = task;
   }
   get task(): Task | undefined {
