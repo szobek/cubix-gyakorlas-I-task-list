@@ -10,10 +10,11 @@ import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { Router } from '@angular/router';
+import { CounterComponent } from '../counter/counter.component';
 
 @Component({
   selector: 'cgyi-home',
-  imports: [CommonModule, TaskItemComponent],
+  imports: [CommonModule, TaskItemComponent,CounterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

@@ -58,8 +58,6 @@ export class TaskService {
   }
   private saveTasks() {
     const tasks = [...this.incompletedTasks(), ...this.completedTasks()];
-    console.log(tasks, 'saved tasks');
-
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
