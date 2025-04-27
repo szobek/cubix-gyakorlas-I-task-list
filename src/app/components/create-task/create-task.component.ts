@@ -22,7 +22,7 @@ taskSave(){
     return;
   }
   const task: Task = {
-    id: this.taskService.incompletedTasks().length + 1,
+    id: this.taskService.generateId(),
     name: this.task.name,
     description: this.task.description,
     completed: false,

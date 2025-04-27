@@ -118,4 +118,12 @@ export class TaskService {
       return tasks;
     });
   }
+  generateId(): number {
+    const tasks = [...this.incompletedTasks(), ...this.completedTasks()];
+    if (tasks.length === 0) {
+      return 1;
+    } else {
+      return Math.max(...tasks.map((task) => task.id)) + 1;
+    }
+  }
 }
