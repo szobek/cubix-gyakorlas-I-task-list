@@ -32,6 +32,8 @@ export class TaskItemComponent {
     this.taskService.inCompleteTask(task);
   }
   deleteTask(task: Task) {
-    this.taskService.deleteTask(task);
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.taskService.deleteTask(task);
+    }
   }
 }
