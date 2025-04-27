@@ -11,8 +11,6 @@ export class TaskService {
   completeTask(task: Task) {
     this.incompletedTasks.update((tasks) => {
       const index = this.findTaskIndex(task.id, this.incompletedTasks);
-      console.log(tasks[index], 'index of task to be completed');
-
       if (index !== -1) {
         tasks[index].completed = true;
         this.completedTasks.update((completedTasks) => [
