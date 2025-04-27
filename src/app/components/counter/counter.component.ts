@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -9,16 +9,11 @@ import { TaskService } from '../../services/task.service';
 })
 export class CounterComponent {
 taskService = inject(TaskService);
-text = ' ';
-  incompletedTasks
   completedTasks
   constructor() {
-    this.incompletedTasks = this.taskService.incompletedTasks;
-    this.completedTasks = this.taskService.completedTasks();
-    this.text+=this.completedTasks.length;
-    console.log(this.text);
+    this.completedTasks = this.taskService.completedTasks;
   }
   get textOfCompletedTasks(){
-    return `${this.completedTasks.length} tasks completed`;
+    return `${this.completedTasks().length} tasks completed`;
   }
 }
