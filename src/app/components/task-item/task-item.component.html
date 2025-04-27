@@ -12,11 +12,22 @@
         <button (click)="inCompleteTask(task)">
             <img src="uncheck.svg" alt="">
         </button>
-        } @else {
+        
+        
+    } @else {
         <button (click)="completeTask(task)">
             <img src="check.svg" alt="">
         </button>
-        }
+         @if(!task.important){
+            <button (click)="markTaskAsImportant(task)">
+                <img src="important.svg" alt="">
+            </button>
+        } @else {
+            <button (click)="markTaskAsUnimportant(task)">
+                <img src="unimportant.svg" alt="">
+                </button>
+        } 
+            }
         <button (click)="deleteTask(task)">
             <img src="delete.svg" alt="">
         </button>

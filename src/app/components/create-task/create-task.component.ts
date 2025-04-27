@@ -27,6 +27,7 @@ taskSave(){
     description: this.task.description,
     completed: false,
     user: localStorage.getItem('username') || 'N/A',
+    important: false,
   }
   this.taskService.addTask(task).then((res)=>{
     if(res){

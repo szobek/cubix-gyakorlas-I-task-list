@@ -5,6 +5,7 @@ import { Task } from '../models/task';
   providedIn: 'root',
 })
 export class TaskService {
+ 
   incompletedTasks: WritableSignal<Task[]> = signal([]);
   completedTasks: WritableSignal<Task[]> = signal([]);
 
@@ -95,5 +96,26 @@ export class TaskService {
         return tasks;
       });
     }
+  }
+
+  markTaskAsUnimportant(task: Task) {
+    this.incompletedTasks.update((tasks) => {
+      const index = this.findTaskIndex(task.id, this.incompletedTasks);
+      if (index !== -1) {
+        tasks[index].important = false;
+        this.saveTasks();
+      }
+      return tasks;
+    });
+  }
+  markTaskAsImportant(task: Task) {
+    this.incompletedTasks.update((tasks) => {
+      const index = this.findTaskIndex(task.id, this.incompletedTasks);
+      if (index !== -1) {
+        tasks[index].important = true;
+        this.saveTasks();
+      }
+      return tasks;
+    });
   }
 }

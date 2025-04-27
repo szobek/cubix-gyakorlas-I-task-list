@@ -36,4 +36,10 @@ export class TaskItemComponent {
       this.taskService.deleteTask(task);
     }
   }
+  markTaskAsImportant(task: Task) {
+    this.taskService.markTaskAsImportant(task);
+  }
+  markTaskAsUnimportant(task: Task) {
+    this.taskService.markTaskAsUnimportant(task);
+  }
 }
