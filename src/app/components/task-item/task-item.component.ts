@@ -9,10 +9,11 @@ import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { TaskNamePipe } from '../../pipes/task-name.pipe';
+import { TaskDetailDirective } from '../../directivas/task-detail.directive';
 
 @Component({
   selector: 'cgyi-task-item',
-  imports: [CommonModule,TaskNamePipe],
+  imports: [CommonModule,TaskNamePipe,TaskDetailDirective],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.scss',
 })
